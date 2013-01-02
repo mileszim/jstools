@@ -8,7 +8,7 @@ Binary Search Tree
 This is a very basic binary search tree. You can use it as follows.
 
 	// initialize
-	var bst = new BinarySearchTree();
+	var bst = new JSTools.BinarySearchTree();
 	
 	// inserting
 	bst.insert(5);
