@@ -32,4 +32,24 @@ I tested the BST find method against an array at worst-case with 10,000,000 rand
 	bst find:   0.249ms
 	arr find: 142.056ms
 
-You can't currently delete but that's coming soon. The structure of this library is going to change drastically soon so I don't recommend using it yet.
+You can't currently delete but that's coming soon.
+
+### Trie
+This is a trie structure for rapidly determining the existence of a word in a block of content.
+
+	// initialize
+	var my_content   = "Some long block of text.";
+	var my_separator = " ";
+	var trie = new JSTools.Trie(my_content, my_separator); //default separator is " "
+	
+	// or you can do:
+	var trie = new JSTools.Trie();
+	
+	// inserting
+	trie.insertContent("More long blocks of text.");
+	trie.insertWord("word");
+	
+	// find
+	trie.contains("word");
+	
+I haven't tested the runtime yet. Will do soon.

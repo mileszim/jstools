@@ -1,9 +1,13 @@
+var JSTools = JSTools || {}; // in case of single file inclusion
+
 /**
  * JSTools Binary Search Tree.
  * Miles Zimmerman
  * @constructor
  */
 JSTools.BinarySearchTree = function() {
+    if (!(this instanceof JSTools.BinarySearchTree)) return new JSTools.BinarySearchTree();
+    
     this.master_node = null;
     this._size = 0;
 }
