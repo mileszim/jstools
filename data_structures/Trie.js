@@ -1,4 +1,4 @@
-var JSTools = JSTools || {}; // in case of single file inclusion
+var JSTools = JSTools || {};
 
 /**
  * JSTools Trie

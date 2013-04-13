@@ -3,9 +3,14 @@ JavaScript Tools
 
 JSTools is a collection of tools and data structures I'm writing when I'm bored or as needed. It's also an attempt to get more comfortable with JS best-practices and code conventions.
 
+### Data Structures
+* [Binary Search Tree](#binary_search_tree)
+* [Trie](#trie)
+
 Data Structures
 ---------------
 
+<a name="binary_search_tree">
 ### Binary Search Tree
 This is a very basic binary search tree. You can use it as follows.
 
@@ -36,6 +41,7 @@ I tested the BST find method against an array at worst-case with 10,000,000 rand
 	arr find: 142.056ms
 
 
+<a name="trie">
 ### Trie
 This is a trie structure for rapidly determining the existence of a word in a block of content.
 
