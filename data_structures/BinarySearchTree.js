@@ -153,5 +153,97 @@ JSTools.BinarySearchTree.prototype = {
      */
     size: function() {
         return this._size;
+    },
+    
+    
+    
+    /**
+     * Delete a node from the tree
+     * @param {number} data The data to delete
+     * @return {boolean} True if successful, false if unsuccessful (Node doesn't exist)
+     */
+    remove: function(data) {
+        if (!data || this.size()===0) return false;
+        if (this.size()===1 && this.master_node.data===data) {
+            this.master_node = null;
+            this._size--;
+            return true;
+        }
+        
+        var current_node = this.master_node;
+        var parent_node  = this.master_node;
+        
+        while(true) {
+            if (current_node.data === data) break; // found the node
+            if (!current_node.right_node && !current_node.left_node) return false; //no node in tree
+            parent_node = current_node;
+            if (data < current_node.data) current_node = current_node.left_node;
+            if (data > current_node.data) current_node = current_node.right_node;
+        }
+        
+        if (!current_node.left_node && !current_node.right_node) {
+            if (current_node === parent_node.right_node) {
+                console.log('test');
+                parent_node.right_node = null;
+            }
+            if (current_node === parent_node.left_node) parent_node.left_node = null;
+            this._size--;
+            return true;
+        }
+        
+        if (current_node.left_node && !current_node.right_node) {
+            if (current_node === parent_node.left_node) {
+                parent_node.left_node = current_node.left_node;
+            } else
+            if (current_node === parent_node.right_node) {
+                parent_node.right_node = current_node.left_node;
+            }
+            this._size--;
+            return true;
+        }
+        
+        if (!current_node.left_node && current_node.right_node) {
+            if (current_node === parent_node.left_node) {
+                parent_node.left_node = current_node.right_node;
+            } else
+            if (current_node === parent_node.right_node) {
+                parent_node.right_node = current_node.right_node;
+            }
+            this._size--;
+            return true;
+        }
+        
+        if (current_node.left_node && current_node.right_node) {
+            var replace_data;
+            var replace_parent;
+            
+            // add balance: 0 = left replace, 1 = right replace
+            if ((Math.floor(Math.random()*11) % 2) == 0) {
+                replace_node = current_node.left_node;
+                replace_parent = current_node.left_node;
+                while (replace_node.right_node) {
+                    replace_parent = replace_node;
+                    replace_node = replace_node.right_node;
+                }
+                var replace_data = replace_node.data;
+                replace_parent.right_node = null;
+                current_node.data = replace_data;
+            } else {
+                replace_node = current_node.right_node;
+                replace_parent = current_node.right_node;
+                while (replace_node.left_node) {
+                    replace_parent = replace_node;
+                    replace_node = replace_node.left_node;
+                }
+                var replace_data = replace_node.data;
+                replace_parent.left_node = null;
+                
+            }
+            current_node.data = replace_data;
+            this._size--;
+            return true;
+        }
+        
+        return false;
     }
 };

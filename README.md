@@ -17,6 +17,9 @@ This is a very basic binary search tree. You can use it as follows.
 	bst.insert(10);
 	bst.insert(3);
 	
+	// delete
+	bst.remove(10);
+	
 	// find
 	bst.find(3);
 	
@@ -32,7 +35,6 @@ I tested the BST find method against an array at worst-case with 10,000,000 rand
 	bst find:   0.249ms
 	arr find: 142.056ms
 
-You can't currently delete but that's coming soon.
 
 ### Trie
 This is a trie structure for rapidly determining the existence of a word in a block of content.
